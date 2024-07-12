@@ -1,4 +1,6 @@
+
 "use client"
+// pages/index.tsx
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -10,11 +12,11 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/shorten', {
+      const response = await axios.post('http://localhost:5000/api/shorten', {
         original_url: originalUrl,
       });
       setShortUrl(response.data.short_url);
-      setQrCodeUrl(`http://127.0.0.1:5000/api/qrcode/${response.data.short_url.split('/').pop()}`);
+      setQrCodeUrl(`http://localhost:5000/api/qrcode/${response.data.short_url.split('/').pop()}`);
     } catch (error) {
       console.error('Error shortening URL:', error);
     }
